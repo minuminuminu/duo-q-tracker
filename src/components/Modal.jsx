@@ -1,37 +1,64 @@
 import ReactDom from "react-dom";
-import styled from "styled-components";
-
-const BackgroundBlur = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000028;
-  display: flex;
-  justify-content: center;
-`;
-
-const DialogueBox = styled.div`
-  width: 40vw;
-  height: 150px;
-  background-color: white;
-  box-shadow: 0 0 15px black;
-  margin: 30px;
-`;
-
-const ConfirmButton = styled.button``;
+import { useForm } from "react-hook-form";
+import {
+  BackgroundBlur,
+  DialogueBox,
+  Content,
+  TextPart,
+  UIPart,
+  ConfirmButton,
+  Form,
+  CheckboxContainer,
+  Text,
+} from "../styles/ModalStyles";
 
 export const Modal = (props) => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    if (data.checked == true) {
+      props.setOnloadMessage(false);
+      localStorage.setItem("onload", false);
+    } else {
+      props.setOnloadMessage(false);
+    }
+  };
+
   return ReactDom.createPortal(
     <>
       {props.modal ? (
-        <BackgroundBlur>
+        <BackgroundBlur loaded={props.modal ? true : false}>
           <DialogueBox>
-            <ConfirmButton
-              onClick={() => {
-                props.setOnloadMessage(localStorage.setItem("onload", false));
-              }}
-            >
-              TEST
-            </ConfirmButton>
+            <Content>
+              <TextPart>
+                <Text>
+                  <div>
+                    NOTE: The data is stored in your browser. The track of your
+                    Duo-Queue Games is being kept on each machine individually.
+                  </div>
+                  <br />
+                  <div>
+                    e.g.: You won't see the track from your PC browser on your
+                    mobile browser.
+                  </div>
+                </Text>
+              </TextPart>
+              <UIPart>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <CheckboxContainer>
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      id="checkbox"
+                      {...register("checked")}
+                    />
+                    <label htmlFor="checkbox">
+                      Understood, don't show again.
+                    </label>
+                  </CheckboxContainer>
+                  <ConfirmButton>Close</ConfirmButton>
+                </Form>
+              </UIPart>
+            </Content>
           </DialogueBox>
         </BackgroundBlur>
       ) : null}
