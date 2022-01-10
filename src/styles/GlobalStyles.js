@@ -10,9 +10,5 @@ export const GlobalStyle = createGlobalStyle`
   body{
     width:100vw;
     height:100vh;
-    background-image: url("/images/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 `;

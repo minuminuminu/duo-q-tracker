@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FullBody } from "./components/FullBody";
 import { Modal } from "./components/Modal";
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
   });
 
   return (
-    <>
+    <FullBody>
       <Modal modal={onloadMessage} setOnloadMessage={setOnloadMessage} />
-    </>
+    </FullBody>
   );
 }
 
