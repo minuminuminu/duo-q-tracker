@@ -12,8 +12,10 @@ function App() {
       setOnloadMessage(false);
     } else if (onloadMessage === "true") {
       setOnloadMessage(true);
+    } else {
+      setOnloadMessage(true);
     }
-  });
+  }, []);
 
   return (
     <FullBody>
