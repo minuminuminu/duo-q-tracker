@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Modal } from "./components/Modal";
+import { FullBody } from "./styles/AppStyles";
+import { AddCard } from "./components/AddCard";
+import { Cards } from "./components/Cards";
 
 function App() {
   const [onloadMessage, setOnloadMessage] = useState(
@@ -18,7 +21,11 @@ function App() {
 
   return (
     <>
-      <Modal modal={onloadMessage} setOnloadMessage={setOnloadMessage} />
+      {/* <Modal modal={onloadMessage} setOnloadMessage={setOnloadMessage} /> */}
+      <FullBody>
+        <AddCard />
+        <Cards />
+      </FullBody>
     </>
   );
 }

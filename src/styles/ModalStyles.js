@@ -19,6 +19,7 @@ export const BackgroundBlur = styled.div`
   background-color: #00000028;
   display: flex;
   justify-content: center;
+  position: absolute;
 
   animation: ${(props) => (props.loaded ? transitionIn : null)} 0.75s;
 `;
