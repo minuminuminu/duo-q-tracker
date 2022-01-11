@@ -8,6 +8,7 @@ export const Cards = () => {
       <TrackCard />
       <TrackCard />
       <TrackCard />
+      <TrackCard />
     </Content>
   );
 };

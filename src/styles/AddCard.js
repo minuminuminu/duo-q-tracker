@@ -23,7 +23,7 @@ export const Input = styled.input`
   font-size: 20px;
   text-align: center;
   padding: 10px;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:focus {
     width: 20vw;

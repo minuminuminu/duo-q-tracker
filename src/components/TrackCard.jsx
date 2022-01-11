@@ -1,10 +1,27 @@
-import { Card, CounterContainer, Name } from "../styles/TrackCardStyles";
+import {
+  AddCounter,
+  Card,
+  Counter,
+  CounterContainer,
+  MinusSign,
+  Name,
+  PlusSign,
+  RemoveCounter,
+} from "../styles/TrackCardStyles";
 
 export const TrackCard = () => {
   return (
     <Card>
       <Name>Hi</Name>
-      <CounterContainer></CounterContainer>
+      <CounterContainer>
+        <AddCounter>
+          <PlusSign />
+        </AddCounter>
+        <Counter></Counter>
+        <RemoveCounter>
+          <MinusSign />
+        </RemoveCounter>
+      </CounterContainer>
     </Card>
   );
 };
