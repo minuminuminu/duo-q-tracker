@@ -1,5 +1,13 @@
 import { Content } from "../styles/CardsStyles";
+import { TrackCard } from "./TrackCard";
 
 export const Cards = () => {
-  return <Content></Content>;
+  return (
+    <Content>
+      <TrackCard />
+      <TrackCard />
+      <TrackCard />
+      <TrackCard />
+    </Content>
+  );
 };

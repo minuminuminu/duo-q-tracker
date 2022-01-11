@@ -1,5 +1,5 @@
-import React from "react";
+import { Card } from "../styles/TrackCardStyles";
 
 export const TrackCard = () => {
-  return <div></div>;
+  return <Card>Hi</Card>;
 };
