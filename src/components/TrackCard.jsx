@@ -1,5 +1,10 @@
-import { Card } from "../styles/TrackCardStyles";
+import { Card, CounterContainer, Name } from "../styles/TrackCardStyles";
 
 export const TrackCard = () => {
-  return <Card>Hi</Card>;
+  return (
+    <Card>
+      <Name>Hi</Name>
+      <CounterContainer></CounterContainer>
+    </Card>
+  );
 };
