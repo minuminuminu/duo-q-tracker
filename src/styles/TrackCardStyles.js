@@ -30,6 +30,7 @@ export const CounterContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
 `;
 
 export const AddCounter = styled.div`
@@ -56,6 +57,12 @@ export const PlusSign = styled(AiOutlinePlus)`
 export const Counter = styled.div`
   height: 100%;
   width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 300;
 `;
 
 export const RemoveCounter = styled.div`

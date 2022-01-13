@@ -4,11 +4,8 @@ import { TrackCard } from "./TrackCard";
 export const Cards = () => {
   return (
     <Content>
-      <TrackCard />
-      <TrackCard />
-      <TrackCard />
-      <TrackCard />
-      <TrackCard />
+      <TrackCard name="Luis" />
+      <TrackCard name="Nil" />
     </Content>
   );
 };

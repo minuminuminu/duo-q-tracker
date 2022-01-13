@@ -7,7 +7,12 @@ export const AddCard = () => {
     if (data.entry === "") {
       alert("You need to enter a valid name!");
     } else {
-      console.log(data.entry);
+      const test = {
+        luis: { wins: 0, losses: 0 },
+        nil: { wins: 2, losses: 1 },
+      };
+      localStorage.setItem("names", JSON.stringify(test));
+      console.log(JSON.parse(localStorage.getItem("names")));
     }
   };
 
