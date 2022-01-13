@@ -1,1 +1,3 @@
 everything reset after adding new user bruh
+
++ => make trackcard stateless
