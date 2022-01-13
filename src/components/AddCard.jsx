@@ -2,7 +2,7 @@ import { Content, Form, Input, SubmitButton } from "../styles/AddCard";
 import { useForm } from "react-hook-form";
 
 export const AddCard = (props) => {
-  const { register, handleSubmit } = useForm();
+  const { register, resetField, handleSubmit } = useForm();
   const onSubmit = (data) => {
     if (data.entry === "") {
       alert("You need to enter a valid name!");
@@ -10,6 +10,7 @@ export const AddCard = (props) => {
       props.setLocalStorage({
         [data["entry"].toLowerCase()]: { wins: 0, losses: 0 },
       });
+      resetField("entry");
     }
   };
 
@@ -20,7 +21,6 @@ export const AddCard = (props) => {
           type="text"
           autoComplete="off"
           placeholder="New Duo Entry"
-          // id=""
           {...register("entry")}
         />
         <SubmitButton>Add Tracker</SubmitButton>
