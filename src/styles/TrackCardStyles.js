@@ -21,6 +21,7 @@ export const Name = styled.div`
   align-items: center;
   font-size: 40px;
   font-weight: 500;
+  text-transform: capitalize;
 `;
 
 export const CounterContainer = styled.div`
@@ -63,6 +64,10 @@ export const Counter = styled.div`
   flex-direction: column;
   font-size: 20px;
   font-weight: 300;
+
+  & > div {
+    margin: 2px;
+  }
 `;
 
 export const RemoveCounter = styled.div`

@@ -1,15 +1,15 @@
 import { Content, Form, Input, SubmitButton } from "../styles/AddCard";
 import { useForm } from "react-hook-form";
 
-export const AddCard = () => {
+export const AddCard = (props) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     if (data.entry === "") {
       alert("You need to enter a valid name!");
     } else {
-      console.log(data.entry);
-      localStorage.setItem("names", JSON.stringify(test));
-      console.log(JSON.parse(localStorage.getItem("names")));
+      props.setLocalStorage({
+        [data["entry"].toLowerCase()]: { wins: 0, losses: 0 },
+      });
     }
   };
 
@@ -20,6 +20,7 @@ export const AddCard = () => {
           type="text"
           autoComplete="off"
           placeholder="New Duo Entry"
+          // id=""
           {...register("entry")}
         />
         <SubmitButton>Add Tracker</SubmitButton>

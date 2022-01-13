@@ -8,33 +8,78 @@ function App() {
   const [onloadMessage, setOnloadMessage] = useState(
     localStorage.getItem("onload") ? localStorage.getItem("onload") : "true"
   );
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [names, setNames] = useState(JSON.parse(localStorage.getItem("names")));
 
   useEffect(() => {
-    if (onloadMessage === "false") {
-      setOnloadMessage(false);
-    } else if (onloadMessage === "true") {
+    if (onloadMessage === "true") {
       setOnloadMessage(true);
     } else {
-      setOnloadMessage(true);
+      setOnloadMessage(false);
     }
   }, []);
 
   useEffect(() => {
+    if (localStorage.getItem("names") === null) {
+      return;
+    }
+
     const userObj = JSON.parse(localStorage.getItem("names"));
-    Object.entries(userObj).map((e) => {
-      Object.entries(e[1]).map((u) => {
-        console.log(u);
+    setUsers(Object.entries(userObj));
+  }, [names]);
+
+  const setLocalStorage = (obj) => {
+    const newObj = { ...names, ...obj };
+    localStorage.setItem("names", JSON.stringify(newObj));
+    setNames(newObj);
+  };
+
+  const removeFunc = (name) => {
+    let newObj = { ...names };
+    delete newObj[name];
+    localStorage.setItem("names", JSON.stringify(newObj));
+    setNames(newObj);
+  };
+
+  const methods = {
+    win: (name) => {
+      const myObj = [...users];
+      myObj.map((e) => {
+        if (name !== e[0]) {
+          return;
+        } else {
+          e[1].wins += 1;
+          let newObj = JSON.parse(localStorage.getItem("names"));
+          newObj[name].wins += 1;
+          localStorage.setItem("names", JSON.stringify(newObj));
+        }
       });
-    });
-  }, []);
+
+      setUsers(myObj);
+    },
+    loss: (name) => {
+      const myObj = [...users];
+      myObj.map((e) => {
+        if (name !== e[0]) {
+          return;
+        } else {
+          e[1].losses += 1;
+          let newObj = JSON.parse(localStorage.getItem("names"));
+          newObj[name].losses += 1;
+          localStorage.setItem("names", JSON.stringify(newObj));
+        }
+      });
+
+      setUsers(myObj);
+    },
+  };
 
   return (
     <>
-      {/* <Modal modal={onloadMessage} setOnloadMessage={setOnloadMessage} /> */}
+      <Modal modal={onloadMessage} setOnloadMessage={setOnloadMessage} />
       <FullBody>
-        <AddCard />
-        <Cards />
+        <AddCard setLocalStorage={setLocalStorage} />
+        <Cards users={users} removeFunc={removeFunc} methods={methods} />
       </FullBody>
     </>
   );

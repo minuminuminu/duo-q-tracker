@@ -11,22 +11,18 @@ import {
 import { useState, useEffect } from "react";
 
 export const TrackCard = (props) => {
-  const [count, setCount] = useState([0, 0]);
+  const [count, setCount] = useState([props.wins, props.losses]);
   const [winrate, setWinrate] = useState("---");
-
-  const add = () => {
-    setCount([count[0] + 1, count[1]]);
-  };
-
-  const remove = () => {
-    setCount([count[0], count[1] + 1]);
-  };
 
   useEffect(() => {
     if (count[0] === 0 && count[1] === 0) {
       setWinrate("---");
     }
   }, []);
+
+  useEffect(() => {
+    setCount([props.wins, props.losses]);
+  }, [props.wins, props.losses]);
 
   useEffect(() => {
     const total = count[0] + count[1];
@@ -43,17 +39,17 @@ export const TrackCard = (props) => {
 
   return (
     <Card>
-      <Name>{props.name}</Name>
+      <Name onClick={() => props.removeFunc(props.name)}>{props.name}</Name>
       <CounterContainer>
-        <AddCounter onClick={() => add()}>
+        <AddCounter onClick={() => props.methods.win(props.name)}>
           <PlusSign />
         </AddCounter>
         <Counter>
-          <div>Wins: {count[0]}</div>
-          <div>Losses: {count[1]}</div>
+          <div>Wins: {props.wins}</div>
+          <div>Losses: {props.losses}</div>
           <div>Winrate: {winrate}%</div>
         </Counter>
-        <RemoveCounter onClick={() => remove()}>
+        <RemoveCounter onClick={() => props.methods.loss(props.name)}>
           <MinusSign />
         </RemoveCounter>
       </CounterContainer>
