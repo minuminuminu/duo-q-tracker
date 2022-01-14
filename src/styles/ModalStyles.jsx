@@ -20,6 +20,7 @@ export const BackgroundBlur = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
+  z-index: 1;
 
   animation: ${(props) => (props.loaded ? transitionIn : null)} 0.75s;
 `;
@@ -30,6 +31,7 @@ export const DialogueBox = styled.div`
   background-color: white;
   box-shadow: 0 0 5px white;
   margin: 30px;
+  z-index: 1;
 `;
 
 export const Content = styled.div`
