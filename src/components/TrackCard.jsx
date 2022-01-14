@@ -2,6 +2,7 @@ import {
   AddCounter,
   Card,
   Counter,
+  CloseIcon,
   CounterContainer,
   MinusSign,
   Name,
@@ -9,6 +10,7 @@ import {
   RemoveCounter,
 } from "../styles/TrackCardStyles";
 import { useState, useEffect } from "react";
+import { CloseContainer } from "../styles/TrackCardStyles";
 
 export const TrackCard = (props) => {
   const [winrate, setWinrate] = useState("---");
@@ -34,7 +36,12 @@ export const TrackCard = (props) => {
 
   return (
     <Card>
-      <Name onClick={() => props.removeFunc(props.name)}>{props.name}</Name>
+      <Name>
+        <div>{props.name}</div>
+        <CloseContainer onClick={() => props.removeFunc(props.name)}>
+          <CloseIcon />
+        </CloseContainer>
+      </Name>
       <CounterContainer>
         <AddCounter onClick={() => props.methods.win(props.name)}>
           <PlusSign />

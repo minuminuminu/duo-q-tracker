@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 
 export const Card = styled.div`
   margin: 18px;
@@ -14,6 +14,7 @@ export const Card = styled.div`
 `;
 
 export const Name = styled.div`
+  position: relative;
   height: 40%;
   width: 100%;
   display: flex;
@@ -22,6 +23,29 @@ export const Name = styled.div`
   font-size: 40px;
   font-weight: 500;
   text-transform: capitalize;
+`;
+
+export const CloseContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 5px;
+  padding: 6px;
+  background-color: #e72c2cb9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #d82525c0;
+  }
+`;
+
+export const CloseIcon = styled(AiOutlineClose)`
+  font-size: 25px;
 `;
 
 export const CounterContainer = styled.div`
@@ -83,7 +107,7 @@ export const RemoveCounter = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: #e03f3fbf;
+    background-color: #da3131c5;
   }
 `;
 
