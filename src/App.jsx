@@ -52,9 +52,9 @@ function App() {
           let newObj = JSON.parse(localStorage.getItem("names"));
           newObj[name].wins += 1;
           localStorage.setItem("names", JSON.stringify(newObj));
+          setNames(newObj);
         }
       });
-
       setUsers(myObj);
     },
     loss: (name) => {
@@ -67,6 +67,7 @@ function App() {
           let newObj = JSON.parse(localStorage.getItem("names"));
           newObj[name].losses += 1;
           localStorage.setItem("names", JSON.stringify(newObj));
+          setNames(newObj);
         }
       });
 

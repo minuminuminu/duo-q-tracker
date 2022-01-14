@@ -11,31 +11,26 @@ import {
 import { useState, useEffect } from "react";
 
 export const TrackCard = (props) => {
-  const [count, setCount] = useState([props.wins, props.losses]);
   const [winrate, setWinrate] = useState("---");
 
   useEffect(() => {
-    if (count[0] === 0 && count[1] === 0) {
+    if (props.wins === 0 && props.losses === 0) {
       setWinrate("---");
     }
   }, []);
 
   useEffect(() => {
-    setCount([props.wins, props.losses]);
-  }, [props.wins, props.losses]);
+    const total = props.wins + props.losses;
 
-  useEffect(() => {
-    const total = count[0] + count[1];
-
-    if (count[0] === 0 && count[1] === 0) {
+    if (props.wins === 0 && props.losses === 0) {
       return;
     }
 
-    const percentage = count[0] / total;
+    const percentage = props.wins / total;
     const rate = percentage * 100;
 
     setWinrate(rate.toFixed(2));
-  }, [count]);
+  }, [props.wins, props.losses]);
 
   return (
     <Card>
