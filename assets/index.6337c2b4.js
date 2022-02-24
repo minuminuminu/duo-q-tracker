@@ -8,7 +8,7 @@ var S=Object.defineProperty;var b=Object.getOwnPropertySymbols;var k=Object.prot
   body{
     width:100vw;
     height:100vh;
-    background-image: url("/images/background.jpg");
+    background-image: url("images/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
